@@ -52,13 +52,13 @@ for(let i = 0; i < 5; i++)
 {
     playerSelection = prompt('Rock, Paper, Scissors?');
     computerSelection = getComputerChoice(computerSelection);
+    console.log(playRound(playerSelection, computerSelection));
     console.log('player: ' + playerSelection);
     console.log('computer: ' + computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
+    console.log('player: ' + playerScore);
+    console.log('computer: ' + computerScore);
     
 }
 }
 
 console.log(game());
-console.log('player: ' + playerScore);
-console.log('computer: ' + computerScore);
