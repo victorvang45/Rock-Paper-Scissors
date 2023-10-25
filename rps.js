@@ -3,9 +3,14 @@ let  computerScore = 0;
 let playerSelection = '';
 
 
+const player = document.querySelector('#playerScore');
+player.textContent = 'Player: ' + playerScore;
 
+const computer = document.querySelector('#computerScore');
+computer.textContent = 'Computer: ' + computerScore;
 
 const rockBtn = document.querySelector('#rockBtn');
+
 
 rockBtn.addEventListener('click', () => {
     playerSelection = 'rock';
@@ -60,6 +65,10 @@ function game()
     computerSelection = getComputerSelection(computerSelection);
     
     playRound(computerSelection);
+    player.textContent = 'Player: ' + playerScore;
+    computer.textContent = 'Computer: ' + computerScore;
+
+
     console.log('player: ' + playerSelection);
     console.log('computer: ' + computerSelection);
     console.log('player: ' + playerScore);
@@ -71,5 +80,3 @@ function game()
         console.log('computer won');
     }
 }
-
-//console.log(game());
