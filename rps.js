@@ -73,20 +73,19 @@ function playRound(computerSelection)
 
 function game()
 {
-   
     computerSelection = getComputerSelection(computerSelection);
     
     playRound(computerSelection);
     player.textContent = 'Player: ' + playerScore;
     computer.textContent = 'Computer: ' + computerScore;
-
-
-    console.log('player: ' + playerSelection);
-    console.log('computer: ' + computerSelection);
     
     if(playerScore == 5) {
-        console.log('player won')
+        result.textContent = 'You beat the computer! Congrats!!';
+        playerScore = 0;
+        computerScore = 0;
     } else if (computerScore == 5) {
-        console.log('computer won');
+        result.textContent = 'You lost! Better luck next time!';
+        playerScore = 0;
+        computerScore = 0;
     }
 }
