@@ -1,8 +1,10 @@
 let playerScore = 0;
 let  computerScore = 0;
 let playerSelection = '';
+let computerSelection = '';
 
 
+const result = document.querySelector('#result');
 const player = document.querySelector('#playerScore');
 player.textContent = 'Player: ' + playerScore;
 
@@ -10,11 +12,22 @@ const computer = document.querySelector('#computerScore');
 computer.textContent = 'Computer: ' + computerScore;
 
 const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
 
 
 rockBtn.addEventListener('click', () => {
     playerSelection = 'rock';
-    //console.log(playerSelection);
+    game();
+});
+
+paperBtn.addEventListener('click', () => {
+    playerSelection = 'paper';
+    game();
+});
+
+scissorsBtn.addEventListener('click', () => {
+    playerSelection = 'scissors';
     game();
 });
 
@@ -39,20 +52,20 @@ function getComputerSelection(computerSelection)
 
 function playRound(computerSelection)
 {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
     if (playerSelection == computerSelection) 
     {
-        // tie
+        result.textContent = 'It\'s a tie. You both chose ' + playerSelection + '!';
     }
     else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || 
-        (playerSelection == 'scissors' && computerSelection == 'rock')) 
+        (playerSelection == 'scissors' && computerSelection == 'paper')) 
     {
         playerScore++;
+        result.textContent = 'You won! You chose ' + playerSelection + ' and the computer chose ' + computerSelection + '!';
     }
     else 
     {
         computerScore++;
+        result.textContent = 'You lost! You chose ' + playerSelection + ' and the computer chose ' + computerSelection + '!';
     }
 
 }
@@ -60,8 +73,7 @@ function playRound(computerSelection)
 
 function game()
 {
-    let computerSelection = '';
-    
+   
     computerSelection = getComputerSelection(computerSelection);
     
     playRound(computerSelection);
@@ -71,8 +83,6 @@ function game()
 
     console.log('player: ' + playerSelection);
     console.log('computer: ' + computerSelection);
-    console.log('player: ' + playerScore);
-    console.log('computer: ' + computerScore);
     
     if(playerScore == 5) {
         console.log('player won')
